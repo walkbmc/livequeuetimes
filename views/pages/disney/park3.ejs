@@ -1,0 +1,65 @@
+<h5>Hollywood Studio's - Walt Disney World Florida </h5>
+
+<div>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Toy Story Land</i></th>
+            </tr>
+                <% TS.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Sunset Boulevard</i></th>
+            </tr>
+                <% SB.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Echo Lake</i></th>
+            </tr>
+                <% EL.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Animation Courtyard</i></th>
+            </tr>
+                <% AC.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Grand Avenue</i></th>
+            </tr>
+                <% GA.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+</div>

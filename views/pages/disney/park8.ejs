@@ -1,0 +1,40 @@
+<h5> Walt Disney Studios - Disneyland Paris </h5>
+
+<div>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Toon Studio</i></th>
+            </tr>
+                <% TS.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Production Courtyard</i></th>
+            </tr>
+                <% PC.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Backlot</i></th>
+            </tr>
+                <% BL.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+</div>

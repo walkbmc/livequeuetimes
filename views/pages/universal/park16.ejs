@@ -1,0 +1,27 @@
+<h5> Universal Studios Hollywood </h5>
+<div>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Halloween Horror Nights</i></th>
+            </tr>
+                <% HHN1.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Rest of park</i></th>
+            </tr>
+                <% holWood.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+</div>

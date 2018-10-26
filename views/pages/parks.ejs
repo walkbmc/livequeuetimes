@@ -1,0 +1,54 @@
+
+<h5 align="left">Theme Parks</h5>
+<br>
+<ul class="list-unstyled" align="left">
+
+              <li><b>Disney Parks:</b>
+              <% pkDisney.forEach(function(park) { %>
+              <ul>
+                 <a href="<%= park.link %>"><li> <%= park.name %> </li></a>
+              </ul>
+              <% }); %>
+
+              <br>
+              <li><b>Universal parks:</b>
+              <% pkUniversal.forEach(function(park) { %>
+              <ul>
+                <a href="<%= park.link %>"><li> <%= park.name %> </li></a>
+              </ul>
+              <% }); %>
+
+              <br>
+              <!--<li><b>Six Flags:</b>
+              <% pkSixflags.forEach(function(park) { %>
+              <ul>
+                <a href="<%= park.link %>"><li> <%= park.name %></li></a>
+              </ul>
+              <% }); %>
+
+              <br> 
+              <li><b>Merlin Parks:</b>
+              <% pkMerlin.forEach(function(park) { %>
+              <ul>
+                <a href="<%= park.link %>"><li> <%= park.name %></li></a>
+              </ul>
+              <% }); %>
+
+              <br>
+              <li><b>Cedar Parks:</b>
+              <% pkCedar.forEach(function(park) { %>
+              <ul>
+                <a href="<%= park.link %>"><li> <%= park.name %></li></a>
+              </ul>
+              <% }); %>
+
+              <br>
+              <li><b>Other:</b>
+              <% pkOther.forEach(function(park) { %>
+              <ul>
+                <a href="<%= park.link %>"><li> <%= park.name %></li></a>
+              </ul>
+              <% }); %> -->
+
+            </ul>
+

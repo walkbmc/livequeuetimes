@@ -1,0 +1,88 @@
+    <h5> Universal Studio's Florida </h5>
+
+    <div>
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Halloween Horror Nights</i></th>
+            </tr>
+                <% HHN.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+      
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Production Central</i></th>
+            </tr>
+                <% PC.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+    
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>New York City</i></th>
+            </tr>
+                <% NYC.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+    
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>San Francisco</i></th>
+            </tr>
+                <% SF.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+     
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>The Wizarding World of Harry Potter - Diagon Alley</i></th>
+            </tr>
+                <% HP.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>World Expo/Springfield</i></th>
+            </tr>
+                <% WE.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Woody Woodpecker's Kidzone</i></th>
+            </tr>
+                <% WW.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+      </div>

@@ -1,0 +1,31 @@
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+table {
+  display: inline-table;
+  margin: 20px;
+  text-align: left;
+ }
+
+.container {
+  max-width: 80%;
+  text-align: center;
+}
+
+.footer {
+    border-top: 4px;
+    border-color: black;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    /*bottom: 0;*/
+    width: 100%;
+    /*overflow: hidden;*/
+}
+

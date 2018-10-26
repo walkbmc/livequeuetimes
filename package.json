@@ -1,0 +1,21 @@
+{
+  "name": "livequeuetimes",
+  "version": "1.0.0",
+  "description": "A website which provides live queue times for all the top theme parks in the world",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brian McDonnell",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-ejs-layouts": "^2.4.0",
+    "node": "^11.0.0",
+    "nodemon": "^1.18.3",
+    "themeparks": "^4.7.7",
+    "underscore": "^1.9.1"
+  }
+}

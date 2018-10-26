@@ -1,0 +1,87 @@
+      <h5> Universal's Islands of Adventure Florida </h5>
+      <div>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Marvel super Hero Land</i></th>
+            </tr>
+                <% MSH.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Toon Lagoon</i></th>
+            </tr>
+                <% TL.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Skull Island</i></th>
+            </tr>
+                <% SI.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Jurrasic Park</i></th>
+            </tr>
+                <% JP.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>The Wizarding World of Harry Potter - Hogsmeade</i></th>
+            </tr>
+                <% PH.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>The Lost Continent</i></th>
+            </tr>
+                <% LC.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+
+        <table class="table" style="width:auto">
+            <tr>
+              <th colspan="2" bgcolor="#d9d9d9"><i>Seuss Landing</i></th>
+            </tr>
+                <% SL.forEach(function(park) { %>
+                    <tr>
+                               <td> <%= park.name %> </td>
+                               <td> <span class="<%= park.status %>"><b> <%= park.time %> </b></span></td>
+                    </tr>
+                <% }); %>
+        </table>
+      </div>
