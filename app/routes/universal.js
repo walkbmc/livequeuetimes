@@ -235,7 +235,7 @@ router.get('/park16', function(req, res) {
   hollyWood.GetWaitTimes().then(function(rides) {
     // print each wait time
     for(var i=0, ride; ride=rides[i++];) {
-           if (ride.name.indexOf('Carnival')>=0 || ride.name.indexOf('Dead')>=0
+           if (ride.name.indexOf('Carnival')>=0 || ride.id.indexOf('UniversalStudiosHollywood_13938')>=0
             || ride.name.indexOf('Meyers')>=0 || ride.name.indexOf('Poltergeist')>=0
             || ride.name.indexOf('Dreadtime')>=0 || ride.name.indexOf('Purge')>=0
             || ride.name.indexOf('Universal')>=0 || ride.name.indexOf('Stranger')>=0

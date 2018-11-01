@@ -81,6 +81,11 @@ router.get('/contact', function(req, res) {
   res.render('pages/contact');
 });
 
+// route for our about
+router.get('/privacy', function(req, res) {
+  res.render('pages/privacy');
+});
+
 router.post('/contact', function(req, res) {
 	//TODO Set it up so that feedback is sent as email
 	res.send('Thanks for the feedback, ' + req.body.name + '! We will respond shortly!');
