@@ -84,7 +84,13 @@ router.get('/contact', function(req, res) {
 // route for our privacy page
 router.get('/privacy', function(req, res) {
   res.render('pages/privacy');
-});
+}, console.error);
+
+// route for our sitemap
+router.get('/sitemap', function(req, res) {
+    res.header('Content-Type', 'text/xml');
+    res.send(sitemap); 
+}, console.error);
 
 router.post('/contact', function(req, res) {
 	//TODO Set it up so that feedback is sent as email
