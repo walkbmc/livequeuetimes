@@ -1,7 +1,11 @@
 // require express
 var express = require('express');
 var path = require('path');
-var Themeparks = require("themeparks");
+const Themeparks = require("themeparks");
+
+// configure where SQLite DB sits
+// optional - will be created in node working directory if not configured
+//Themeparks.Settings.Cache = __dirname + "/ts.db";
 
 var pkDisney = [];
 var openClosed = [];
@@ -64,7 +68,7 @@ var DS = [];
 var disneyHK = [];
 
 // access a specific park
-var disneyMagicKingdom = new Themeparks.Parks.WaltDisneyWorldMagicKingdom();
+const disneyMagicKingdom = new Themeparks.Parks.WaltDisneyWorldMagicKingdom();
 var disneyEpcot = new Themeparks.Parks.WaltDisneyWorldEpcot();
 var disneyHollywood = new Themeparks.Parks.WaltDisneyWorldHollywoodStudios();
 var animalKingdom = new Themeparks.Parks.WaltDisneyWorldAnimalKingdom();
@@ -86,13 +90,13 @@ var router = express.Router();
 // export our router
 module.exports = router;
 
-
 // route for our disneyworld florida magic kingdom page
 router.get('/park1', function(req, res) {
 
     // access wait times by Promise and copy to an array
     // get wait times for the different specific lands
-     disneyMagicKingdom.GetWaitTimes().then(function(rides) {
+      const CheckWaitTimes = () => {
+     disneyMagicKingdom.GetWaitTimes().then((rideTimes) => {
     
     for(var i=0, ride; ride=rides[i++];) {
        if(ride.id == 'WaltDisneyWorldMagicKingdom_80010230' || ride.id == 'WaltDisneyWorldMagicKingdom_80010165' 
@@ -174,7 +178,14 @@ router.get('/park1', function(req, res) {
           }
         }
      }
-    }, console.error);
+    }).catch((error) => {
+        console.error(error);
+    }).then(() => {
+        setTimeout(CheckWaitTimes, 1000 * 60 * 5); // refresh every 5 minutes
+    });
+  };
+  CheckWaitTimes();
+    //, console.error);
 
   res.render('pages/disney/park1', { MSU: MSU, aLand: aLand, fLand: fLand, fanLand: fanLand, lSquare: lSquare, tLand: tLand, openClosed: openClosed, status: status});
   MSU = [];
@@ -185,9 +196,10 @@ router.get('/park1', function(req, res) {
   tLand = [];
   openClosed = [];
   status = [];
-  
 });
+//CheckWaitTimes();
 
+/*
 // get wait times for epcot park
 router.get('/park2', function(req, res) {
   
@@ -744,4 +756,4 @@ router.get('/park12', function(req, res) {
 
   res.render('pages/disney/park12', {disneyHK: disneyHK});
   disneyHK = [];
-});
+});*/
