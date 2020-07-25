@@ -4,7 +4,8 @@
   "description": "A website which provides live queue times for all the top theme parks in the world",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Brian McDonnell",
   "license": "ISC",
@@ -17,5 +18,21 @@
     "nodemon": "^1.19.3",
     "themeparks": "^4.8.0",
     "underscore": "^1.9.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walkbmc/livequeuetimes.git"
+  },
+  "keywords": [
+    "wait",
+    "times",
+    "rides",
+    "theme",
+    "parks"
+  ],
+  "bugs": {
+    "url": "https://github.com/walkbmc/livequeuetimes/issues"
+  },
+  "homepage": "https://github.com/walkbmc/livequeuetimes#readme"
 }
