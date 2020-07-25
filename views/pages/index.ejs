@@ -10,15 +10,43 @@
             	<br>
             </div>
 
-            <ul class="list-unstyled" align="left">
+            <div class="container" align="left">
+              <div class="row">
+                <div class="col">
+                  <ul class="list-unstyled" align="left">
+                    <li><b>Walt Disney World Florida</b></li>
+                    <ul>
+                       <a href="/park1"><li> Magic Kingdom </li></a>
+                       <a href="/park2"><li> Epcot </li></a>
+                       <a href="/park3"><li> Hollywood Studio's </li></a>
+                       <a href="/park4"><li> Animal Kingdom </li></a>
+                    </ul>
+                  </ul>
+                </div>
+              
+              <div class="col">
+                <ul class="list-unstyled" align="left">
+                <li><b>Disneyland Paris</b>
+                  <ul>
+                    <a href="/park"><li> Magic Kingdom </li></a>
+                    <a href="/park"><li> Hollywood Studio's </li></a>
+                  </ul>
+                </ul>
+              </div>
 
-              <li><b>Disney:</b>
-              <% pkDisney.forEach(function(park) { %>
-              <ul>
-                 <a href="<%= park.link %>"><li> <%= park.name %> </li></a>
-              </ul>
-              <% }); %>
+            <div class="col">
+                <ul class="list-unstyled" align="left">
+                <li><b>Universal Studio's</b>
+                  <ul>
+                    <a href="/park"><li> Magic Kingdom </li></a>
+                    <a href="/park"><li> Hollywood Studio's </li></a>
+                  </ul>
+                </ul>
+              </div>
+            </div>
+          </div>
 
+              <!--
               <br>
               <li><b>Universal:</b>
               <% pkUniversal.forEach(function(park) { %>
@@ -28,7 +56,7 @@
               <% }); %>
 
               <br>
-              <!--<li><b>Six Flags:</b>
+              <li><b>Six Flags:</b>
               <% pkSixflags.forEach(function(park) { %>
               <ul>
                 <a href="<%= park.link %>"><li> <%= park.name %></li></a>

@@ -3,14 +3,11 @@ var express = require('express');
 var path = require('path');
 const Themeparks = require("themeparks");
 
-// configure where SQLite DB sits
-// optional - will be created in node working directory if not configured
-//Themeparks.Settings.Cache = __dirname + "/ts.db";
-
 var pkDisney = [];
 var openClosed = [];
 var status = []; 
 
+// Orland Magic Kingdom
 var MSU = [];
 var aLand = [];
 var fLand = [];
@@ -18,15 +15,18 @@ var fanLand = [];
 var lSquare = [];
 var tLand = [];
 
+// Epcot
 var fWorld = [];
 var WS = [];
 
+//Hollywood studios
 var EL = [];
 var GA = [];
 var TS = [];
 var AC =[];
 var SB = [];
 var FA = [];
+var SWGE = [];
 
 var africa = [];
 var asia = [];
@@ -69,10 +69,10 @@ var disneyHK = [];
 
 // access a specific park
 const disneyMagicKingdom = new Themeparks.Parks.WaltDisneyWorldMagicKingdom();
-var disneyEpcot = new Themeparks.Parks.WaltDisneyWorldEpcot();
-var disneyHollywood = new Themeparks.Parks.WaltDisneyWorldHollywoodStudios();
-var animalKingdom = new Themeparks.Parks.WaltDisneyWorldAnimalKingdom();
-
+const disneyEpcot = new Themeparks.Parks.WaltDisneyWorldEpcot();
+const disneyHollywood = new Themeparks.Parks.WaltDisneyWorldHollywoodStudios();
+const animalKingdom = new Themeparks.Parks.WaltDisneyWorldAnimalKingdom();
+/*
 var calDisney = new Themeparks.Parks.DisneylandResortMagicKingdom();
 var disneyCalifornia = new Themeparks.Parks.DisneylandResortCaliforniaAdventure();
 
@@ -82,7 +82,7 @@ var disneyparisStudios = new Themeparks.Parks.DisneylandParisWaltDisneyStudios()
 var disneyShanghai = new Themeparks.Parks.ShanghaiDisneyResortMagicKingdom();
 var toykoMagic = new Themeparks.Parks.TokyoDisneyResortMagicKingdom();
 var toykoSea = new Themeparks.Parks.TokyoDisneyResortDisneySea();
-var HK = new Themeparks.Parks.HongKongDisneyland();
+var HK = new Themeparks.Parks.HongKongDisneyland(); */
 
 // create our router object
 var router = express.Router();
@@ -95,19 +95,21 @@ router.get('/park1', function(req, res) {
 
     // access wait times by Promise and copy to an array
     // get wait times for the different specific lands
-      const CheckWaitTimes = () => {
+  const CheckWaitTimes = () => {
      disneyMagicKingdom.GetWaitTimes().then((rideTimes) => {
     
-    for(var i=0, ride; ride=rides[i++];) {
-       if(ride.id == 'WaltDisneyWorldMagicKingdom_80010230' || ride.id == 'WaltDisneyWorldMagicKingdom_80010165' 
-        || ride.id == 'WaltDisneyWorldMagicKingdom_16414579' || ride.id == 'WaltDisneyWorldMagicKingdom_18677928' ) {
-          if (ride.status == 'Operating') { //if ride is operating
-            MSU.push({name: ride.name, time: ride.status, status: "badge badge-success"});
+     for(var i=0, ride; ride=rideTimes[i++];) {
+       if(ride.id == 'WaltDisneyWorldMagicKingdom_17752793' || ride.id == 'WaltDisneyWorldMagicKingdom_80010165' 
+        || ride.id == 'WaltDisneyWorldMagicKingdom_15850196' || ride.id == 'WaltDisneyWorldMagicKingdom_18677928' ) {
+          if (ride.waitTime == '0' && ride.status == 'Operating') { //if ride is a non queue type ride
+          MSU.push({name: ride.name, time: ride.status, status: "badge badge-success"});
+          } else if (ride.status == 'Operating') { //if ride is open then get queue time
+          MSU.push({name: ride.name, time: ride.waitTime + " Mins"});
           }
-          else { //if ride is closed
+          else { //otherwise ride is closed
             MSU.push({name: ride.name, time: ride.status, status: "badge badge-danger"});
           }
-        }
+        } 
         else if(ride.id == 'WaltDisneyWorldMagicKingdom_80010153' || ride.id == 'WaltDisneyWorldMagicKingdom_80010196' 
         || ride.id == 'WaltDisneyWorldMagicKingdom_16124144' || ride.id == 'WaltDisneyWorldMagicKingdom_80010210' || 
             ride.id == 'WaltDisneyWorldMagicKingdom_80010177' || ride.id == 'WaltDisneyWorldMagicKingdom_17272158')
@@ -136,11 +138,12 @@ router.get('/park1', function(req, res) {
         }
         else if (ride.id == 'WaltDisneyWorldMagicKingdom_80010149' || ride.id == 'WaltDisneyWorldMagicKingdom_80010129' 
         || ride.id == 'WaltDisneyWorldMagicKingdom_80010162' || ride.id == 'WaltDisneyWorldMagicKingdom_80010176' || 
-            ride.id == 'WaltDisneyWorldMagicKingdom_16491299' || ride.id == 'WaltDisneyWorldMagicKingdom_16767263'
+            ride.id == 'WaltDisneyWorldMagicKingdom_16874126' || ride.id == 'WaltDisneyWorldMagicKingdom_16767263'
             || ride.id == 'WaltDisneyWorldMagicKingdom_16767276' || ride.id == 'WaltDisneyWorldMagicKingdom_16767284'
-            || ride.id == 'WaltDisneyWorldMagicKingdom_80010213' || ride.id == 'WaltDisneyWorldMagicKingdom_16491297'
-            || ride.id == 'WaltDisneyWorldMagicKingdom_16512939' || ride.id == 'WaltDisneyWorldMagicKingdom_80010117'
-            || ride.id == 'WaltDisneyWorldMagicKingdom_16767209')
+            || ride.id == 'WaltDisneyWorldMagicKingdom_18498503' || ride.id == 'WaltDisneyWorldMagicKingdom_16491297'
+            || ride.id == 'WaltDisneyWorldMagicKingdom_387133' || ride.id == 'WaltDisneyWorldMagicKingdom_80010117'
+            || ride.id == 'WaltDisneyWorldMagicKingdom_15743682' || ride.id == 'WaltDisneyWorldMagicKingdom_80010170'
+            || ride.id ==  'WaltDisneyWorldMagicKingdom_80010213' || ride.id == 'WaltDisneyWorldMagicKingdom_17505397')
         {
           if (ride.waitTime == '0' && ride.status == 'Operating') {
           fanLand.push({name: ride.name, time: ride.status, status: "badge badge-success"});
@@ -177,15 +180,14 @@ router.get('/park1', function(req, res) {
             tLand.push({name: ride.name, time: ride.status, status: "badge badge-danger"});
           }
         }
-     }
+     } 
     }).catch((error) => {
-        console.error(error);
+       console.error(error);
     }).then(() => {
-        setTimeout(CheckWaitTimes, 1000 * 60 * 5); // refresh every 5 minutes
-    });
+        //setTimeout(CheckWaitTimes, 1000 * 60 * 5); // refresh every 5 minutes
+    });  
   };
   CheckWaitTimes();
-    //, console.error);
 
   res.render('pages/disney/park1', { MSU: MSU, aLand: aLand, fLand: fLand, fanLand: fanLand, lSquare: lSquare, tLand: tLand, openClosed: openClosed, status: status});
   MSU = [];
@@ -197,20 +199,20 @@ router.get('/park1', function(req, res) {
   openClosed = [];
   status = [];
 });
-//CheckWaitTimes();
 
-/*
+
 // get wait times for epcot park
 router.get('/park2', function(req, res) {
   
     // access wait times by Promise
-    disneyEpcot.GetWaitTimes().then(function(rides) {
-    for(var i=0, ride; ride=rides[i++];) {
-
+  const CheckWaitTimes = () => {
+    disneyEpcot.GetWaitTimes().then(function(rideTimes) {
+    for(var i=0, ride; ride=rideTimes[i++];) {
       if (ride.name.indexOf('Spaceship')>=0 || ride.name.indexOf('Innoventions')>=0 
         || ride.name.indexOf('Mission')>=0 || ride.name.indexOf('Test Track')>=0 || 
         ride.name.indexOf('The Seas')>=0 || ride.name.indexOf('Soarin')>=0 
-        || ride.name.indexOf('Imagination')>=0 || ride.name.indexOf('Living')>=0 || ride.name.indexOf('Crush')>=0) {
+        || ride.name.indexOf('Imagination')>=0 || ride.name.indexOf('Living')>=0 || ride.name.indexOf('Crush')>=0
+        || ride.name.indexOf('Disney')>=0 || ride.name.indexOf('Crush')>=0) {
              if (ride.waitTime == '0' && ride.status == 'Operating') {
                 fWorld.push({name: ride.name, time: ride.status, status: "badge badge-success"});
               } else if (ride.status == 'Operating') {
@@ -219,7 +221,9 @@ router.get('/park2', function(req, res) {
                 fWorld.push({name: ride.name, time: ride.status, status: "badge badge-danger"})
                  } 
               }
-              else if (ride.name.indexOf('Gran')>=0 || ride.name.indexOf('Frozen Ever')>=0) {
+              else if (ride.name.indexOf('Gran')>=0 || ride.name.indexOf('Frozen Ever')>=0 || 
+                ride.name.indexOf('China')>=0 || ride.name.indexOf('Anna')>=0 || 
+                ride.name.indexOf('Canada')>=0 || ride.name.indexOf('American')>=0) {
                 if (ride.waitTime == '0' && ride.status == 'Operating') {
                 WS.push({name: ride.name, time: ride.status, status: "badge badge-success"});
               } else if (ride.status == 'Operating') {
@@ -229,7 +233,14 @@ router.get('/park2', function(req, res) {
                  } 
               }
             }
-      }, console.error);
+  }).catch((error) => {
+       console.error(error);
+    }).then(() => {
+        //setTimeout(CheckWaitTimes, 1000 * 60 * 5); // refresh every 5 minutes
+    });  
+  };
+  CheckWaitTimes();
+
     res.render('pages/disney/park2', { fWorld: fWorld, WS: WS});
     fWorld = [];
     WS = [];
@@ -237,10 +248,9 @@ router.get('/park2', function(req, res) {
 
 // get wait times for hollywood studios florida
 router.get('/park3', function(req, res) {
-
+  
    // access wait times by Promise
     disneyHollywood.GetWaitTimes().then(function(rides) {
-
         for(var i=0, ride; ride=rides[i++];) {
            if (ride.name.indexOf('Alien')>=0 || ride.name.indexOf('Slinky')>=0 
             || ride.name.indexOf('Mania')>=0) {
@@ -251,7 +261,8 @@ router.get('/park3', function(req, res) {
                 } else {
                   TS.push({name: ride.name, time: ride.status, status: "badge badge-danger"})
                 } 
-              } else if (ride.name.indexOf('Tower')>=0 || ride.name.indexOf('Rock')>=0) {
+              } else if (ride.name.indexOf('Tower')>=0 || ride.name.indexOf('Rock')>=0 ||
+                ride.name.indexOf('Racing')>=0 || ride.name.indexOf('Beauty')>=0) {
                   if (ride.waitTime == '0' && ride.status == 'Operating') {
                   SB.push({name: ride.name, time: ride.status, status: "badge badge-success"});
                 } else if (ride.status == 'Operating') {
@@ -261,7 +272,8 @@ router.get('/park3', function(req, res) {
                 } 
               } else if (ride.name.indexOf('Star Tours')>=0 || ride.name.indexOf('Indiana')>=0 
                 || ride.name.indexOf('Temple')>=0 || ride.name.indexOf('Path of the')>=0
-                || ride.name.indexOf('Forever')>=0) {
+                || ride.name.indexOf('Forever')>=0 || ride.name.indexOf('Celebrity')>=0
+                || ride.name.indexOf('Mickey')>=0) {
                   if (ride.waitTime == '0' && ride.status == 'Operating') {
                   EL.push({name: ride.name, time: ride.status, status: "badge badge-success"});
                 } else if (ride.status == 'Operating') {
@@ -280,7 +292,7 @@ router.get('/park3', function(req, res) {
                 } 
               }
               else if (ride.name.indexOf('Launch Bay')>=0 || ride.name.indexOf('Mermaid')>=0
-                || ride.name.indexOf('Walt Disney Present')>=0) {
+                || ride.name.indexOf('Walt Disney Present')>=0 || ride.name.indexOf('Astromech')>=0) {
                   if (ride.waitTime == '0' && ride.status == 'Operating') {
                   AC.push({name: ride.name, time: ride.status, status: "badge badge-success"});
                 } else if (ride.status == 'Operating') {
@@ -289,23 +301,31 @@ router.get('/park3', function(req, res) {
                   AC.push({name: ride.name, time: ride.status, status: "badge badge-danger"})
                 } 
               }
+              else if (ride.name.indexOf('Falcon')>=0 || ride.name.indexOf('Galaxy')>=0) {
+                  if (ride.waitTime == '0' && ride.status == 'Operating') {
+                  SWGE.push({name: ride.name, time: ride.status, status: "badge badge-success"});
+                } else if (ride.status == 'Operating') {
+                  SWGE.push({name: ride.name, time: ride.waitTime + " Mins"});
+                } else {
+                  SWGE.push({name: ride.name, time: ride.status, status: "badge badge-danger"})
+                } 
+              }
             }
       }, console.error);
       
-  res.render('pages/disney/park3', { TS: TS, SB: SB, EL: EL, GA: GA, AC: AC });
+  res.render('pages/disney/park3', { TS: TS, SB: SB, EL: EL, GA: GA, AC: AC, SWGE: SWGE });
   TS = [];
   SB = [];
   EL = [];
   GA = [];
   AC = [];
+  SWGE = [];
 });
-
+/*
 // route for our animal kingdom page
 router.get('/park4', function(req, res) {
-
   // access wait times by Promise
     animalKingdom.GetWaitTimes().then(function(rides) {
-
     for(var i=0, ride; ride=rides[i++];) {
       if (ride.id.indexOf('80010157')>=0 || ride.id.indexOf('80010235')>=0) {
            if (ride.waitTime == '0' && ride.status == 'Operating') {
@@ -371,10 +391,8 @@ router.get('/park4', function(req, res) {
   DL = [];
   RPW = [];
 });
-
 // route for our disneyland california page
 router.get('/park5', function(req, res) {
-
     // access wait times by Promise
     calDisney.GetWaitTimes().then(function(rides) {
     for(var i=0, ride; ride=rides[i++];) {
@@ -465,7 +483,6 @@ router.get('/park5', function(req, res) {
           }
         }
       }, console.error);
-
   res.render('pages/disney/park5', { adv: adv, critter: critter, NOS: NOS, FL: FL, MT: MT, TL: TL, fantasy: fantasy, main: main} );
   adv = [];
   critter = [];
@@ -476,10 +493,8 @@ router.get('/park5', function(req, res) {
   fantasy = [];
   main = [];
 });
-
 // route for our disney california adventure page
 router.get('/park6', function(req, res) {
-
   // access wait times by Promise
     disneyCalifornia.GetWaitTimes().then(function(rides) {
     for(var i=0, ride; ride=rides[i++];) {
@@ -550,7 +565,6 @@ router.get('/park6', function(req, res) {
             }
         }
       }, console.error);
-
   res.render('pages/disney/park6', { BVS: BVS , PP: PP, PGP: PGP, GP: GP, HL: HL, cars: cars, PW: PW});
   BVS = [];
   PP = [];
@@ -560,10 +574,8 @@ router.get('/park6', function(req, res) {
   cars = [];
   PW = [];
 });
-
 // route for our magic kingdom disneyland paris page
 router.get('/park7', function(req, res) {
-
    // access wait times by Promise
     disneyparisMagicKingdom.GetWaitTimes().then(function(rides) {
     for(var i=0, ride; ride=rides[i++];) {
@@ -625,7 +637,6 @@ router.get('/park7', function(req, res) {
           }
         }
       }, console.error);
-
   res.render('pages/disney/park7', { MST: MST, AD: AD, FD: FD, fanTas: fanTas, TD: TD });
   MST = [];
   AD = [];
@@ -633,10 +644,8 @@ router.get('/park7', function(req, res) {
   fanTas = [];
   TD = [];
 });
-
 // route for our disneyland paris hollywood studios page
 router.get('/park8', function(req, res) {
-
   // access wait times by Promise
     disneyparisStudios.GetWaitTimes().then(function(rides) {
     for(var i=0, ride; ride=rides[i++];) {
@@ -671,16 +680,13 @@ router.get('/park8', function(req, res) {
           }
         }
       }, console.error);
-
   res.render('pages/disney/park8', {TS: TS, PC: PC, BL: BL});
   TS = [];
   PC = [];
   BL = [];
 });
-
 // placeholder route for our shanghai park page
 router.get('/park9', function(req, res) {
-
   // access wait times by Promise
     disneyShanghai.GetWaitTimes().then(function(rides) {
     for(var i=0, ride; ride=rides[i++];) {
@@ -693,14 +699,11 @@ router.get('/park9', function(req, res) {
             } 
           }
       }, console.error);
-
   res.render('pages/disney/park9', {DS: DS});
   DS = [];
 });
-
 // placeholder route for our toyko magic kingdom park park page
 router.get('/park10', function(req, res) {
-
   // access wait times by Promise
     toykoMagic.GetWaitTimes().then(function(rides) {
     for(var i=0, ride; ride=rides[i++];) {
@@ -713,14 +716,11 @@ router.get('/park10', function(req, res) {
             } 
           }
       }, console.error);
-
   res.render('pages/disney/park10', {toykoDisney: toykoDisney});
   toykoDisney = [];
 });
-
 // placeholder route our toyko disney sea park
 router.get('/park11', function(req, res) {
-
     // access wait times by Promise
     toykoSea.GetWaitTimes().then(function(rides) {
     for(var i=0, ride; ride=rides[i++];) {
@@ -733,14 +733,11 @@ router.get('/park11', function(req, res) {
             } 
           }
       }, console.error);
-
   res.render('pages/disney/park11', {disneySea: disneySea});
   disneySea = [];
 });
-
 // placeholder route for our hong kong park page
 router.get('/park12', function(req, res) {
-
   // access wait times by Promise
     HK.GetWaitTimes().then(function(rides) {
     for(var i=0, ride; ride=rides[i++];) {
@@ -753,7 +750,6 @@ router.get('/park12', function(req, res) {
             } 
           }
       }, console.error);
-
   res.render('pages/disney/park12', {disneyHK: disneyHK});
   disneyHK = [];
 });*/

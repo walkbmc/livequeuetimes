@@ -1,7 +1,7 @@
 // require express
 var express = require('express');
 var path = require('path');
-var Themeparks = require("themeparks");
+const Themeparks = require("themeparks");
 var pkDisney = [];
 var pkUniversal = [];
 var pkSixflags = [];
@@ -25,11 +25,12 @@ router.get('/', function(req, res) {
 
 var pkIndex = 1;
 
-for (var park in Themeparks.Parks) {
+//const Parks = {};
+/* for (const park in Themeparks.Parks) {
 
-	if (new Themeparks.Parks[park]().Name.indexOf('Disney') >=0) {
-    pkDisney.push({name: new Themeparks.Parks[park]().Name, link: pkLinks[pkIndex]});
-  }
+  	if (new Themeparks.Parks[park]().Name.indexOf('Disney') >=0) {
+       pkDisney.push({name: new Themeparks.Parks[park]().Name, link: pkLinks[pkIndex]});
+    }
     
   else if (new Themeparks.Parks[park]().Name.indexOf('Universal') >=0) {
     pkUniversal.push({name: new Themeparks.Parks[park]().Name, link: pkLinks[pkIndex]});
@@ -57,7 +58,7 @@ for (var park in Themeparks.Parks) {
 
     pkIndex = pkIndex + 1;
 
-    }
+    } */
 
   res.render('pages/index', { pkDisney: pkDisney, pkUniversal: pkUniversal, pkSixflags: pkSixflags, pkOther: pkOther, pkMerlin: pkMerlin, pkCedar: pkCedar });
   pkDisney = [];
