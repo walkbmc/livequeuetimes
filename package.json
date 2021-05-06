@@ -17,7 +17,7 @@
     "node": "^11.15.0",
     "nodemon": "^1.19.3",
     "themeparks": "^4.8.0",
-    "underscore": "^1.9.1"
+    "underscore": "^1.12.1"
   },
   "devDependencies": {},
   "repository": {
